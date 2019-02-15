@@ -30,7 +30,7 @@ build:
 build_script:
  - dotnet tool install --global dotnet-sonarscanner
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet 
- sonarscanner begin /k:"guibranco_CEPAberto" 
+ sonarscanner begin /k:"guibranco_ViaCEP" 
  /d:sonar.organization="guibranco-github" 
  /d:sonar.host.url="https://sonarcloud.io" 
  /d:sonar.login="$env:SONAR_TOKEN" /v:"$env:APPVEYOR_BUILD_NUMBER" 
@@ -50,9 +50,12 @@ after_build:
 artifacts:
 - path: ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile
+- path: ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
+  name: Package
 deploy:
 - provider: Environment
   name: NuGet
+  artifact: Package
 - provider: GitHub
   tag: $(appveyor_build_version)
   auth_token:

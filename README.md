@@ -6,6 +6,7 @@ The [ViaCEP](https://viacep.com.br) web service client for .NET projects
 [![LatLongNet NuGet Downloads](https://img.shields.io/nuget/dt/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/)
 [![Github All Releases](https://img.shields.io/github/downloads/guibranco/ViaCEP/total.svg?style=flat)](https://github.com/guibranco/ViaCEP)
 
+[![codecov](https://codecov.io/gh/guibranco/viacep/branch/master/graph/badge.svg)](https://codecov.io/gh/guibranco/viacep)
 ![Last release](https://img.shields.io/github/release-date/guibranco/viacep.svg?style=flat)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)

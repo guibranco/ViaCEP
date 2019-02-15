@@ -22,6 +22,11 @@ build:
   include_nuget_references: true
   parallel: true
   verbosity: normal
+ build_script:
+ - dotnet tool install --global dotnet-sonarscanner
+ - dotnet sonarscanner begin /k:"guibranco_CEPAberto" /d:sonar.login="dcd7228a1cdbe91a00ed2e2fb07d4edaa6a0283a"
+ - dotnet build ViaCEP.sln
+ - dotnet sonarscanner end /d:sonar.login="dcd7228a1cdbe91a00ed2e2fb07d4edaa6a0283a"
 after_build:
 - xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
 - rd /s /q C:\projects\viacep\ViaCEP\bin\Release\

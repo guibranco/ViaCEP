@@ -1,0 +1,41 @@
+version: 2.0.{build}
+branches:
+ only:
+   - master
+skip_tags: true
+image: Visual Studio 2017
+configuration: Release
+skip_commits:
+  message: /(Created|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
+dotnet_csproj: 
+  patch: true 
+  file: '**\*.csproj' 
+  version: '{version}' 
+  package_version: '{version}' 
+  assembly_version: '{version}' 
+  file_version: '{version}' 
+  informational_version: '{version}' 
+before_build:
+- cmd: nuget restore
+build:
+  publish_nuget: true
+  include_nuget_references: true
+  parallel: true
+  verbosity: normal
+after_build:
+- xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
+- rd /s /q C:\projects\viacep\ViaCEP\bin\Release\
+- cd C:\projects\viacep\
+- 7z a -tzip -mx9 "ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip" src
+artifacts:
+- path: ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip
+  name: ZipFile
+deploy:
+- provider: Environment
+  name: NuGet
+- provider: GitHub
+  tag: $(appveyor_build_version)
+  auth_token:
+    secure: VgYYJdvNLy/n9/uxxlaF0bMpIIrVxCb+dGr66U9nWfPWSN2ySdfuilO8klAw0uvF
+  force_update: true
+  artifact: ZipFile

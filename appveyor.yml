@@ -36,7 +36,7 @@ build_script:
  /d:sonar.login="$env:SONAR_TOKEN" /v:"$env:APPVEYOR_BUILD_NUMBER" 
  /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
  /d:sonar.coverage.exclusions="ViaCEP.Tests/**,**/*Tests.cs" 
- /d:sonar.cs.opencover.reportsPaths="$env:CD\lcov.opencover.xml" }'
+ /d:sonar.cs.opencover.reportsPaths="$env:CD\ViaCEP.Tests\coverage.opencover.xml" }'
  - dotnet build
  - ps: dotnet test .\ViaCEP.Tests\ViaCEP.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'

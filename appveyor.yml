@@ -31,7 +31,7 @@ build_script:
  - dotnet build
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
 test_script:
- - xunit.console ViaCEP.Tests.dll -appveyor
+ - xunit.console %APPVEYOR_BUILD_FOLDER%\ViaCEP.Tests.dll -appveyor
 after_build:
 - xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
 - rd /s /q C:\projects\viacep\ViaCEP\bin\Release\

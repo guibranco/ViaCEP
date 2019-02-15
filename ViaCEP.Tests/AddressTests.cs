@@ -19,8 +19,8 @@
             Assert.NotNull(result);
             var list = result.ToList();
             Assert.True(list.Any());
-            Assert.True(list.Any(r => r.ZipCode.Equals("01310-905", StringComparison.CurrentCultureIgnoreCase)));
-            Assert.True(list.Any(r => r.ZipCode.Equals("01310-923", StringComparison.CurrentCultureIgnoreCase)));
+            Assert.Contains(list, r => r.ZipCode.Equals("01310-905", StringComparison.InvariantCultureIgnoreCase));
+            Assert.Contains(list, r => r.ZipCode.Equals("01310-923", StringComparison.InvariantCultureIgnoreCase));
             var first = list.First();
             Assert.Equal("SP", first.StateInitials);
             Assert.Equal("São Paulo", first.City);

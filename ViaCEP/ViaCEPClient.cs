@@ -16,7 +16,7 @@
         /// <summary>
         /// The base URL
         /// </summary>
-        private const String BaseUrl = "https://viacep.com.br/ws/";
+        private const String BaseUrl = "https://viacep.com.br";
 
         #endregion
 
@@ -44,7 +44,7 @@
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(BaseUrl);
-                var response = await client.GetAsync($"{zipCode}/json", token).ConfigureAwait(false);
+                var response = await client.GetAsync($"/ws/{zipCode}/json", token).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsAsync<ViaCEPResult>(token).ConfigureAwait(false);
             }
@@ -79,7 +79,7 @@
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(BaseUrl);
-                var response = await client.GetAsync($"{stateInitials}/{city}/{address}/json", token).ConfigureAwait(false);
+                var response = await client.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", token).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsAsync<List<ViaCEPResult>>(token).ConfigureAwait(false);
             }

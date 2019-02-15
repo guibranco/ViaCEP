@@ -20,6 +20,8 @@ dotnet_csproj:
   informational_version: '{version}' 
 before_build:
 - cmd: nuget restore
+- cmd: choco install opencover.portable
+- cmd: choco install codecov
 build:
   publish_nuget: true
   include_nuget_references: true

@@ -7,6 +7,9 @@ image: Visual Studio 2017
 configuration: Release
 skip_commits:
   message: /(Created|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
+environment:
+    sonarcloudtoken: 
+        secure: RInIGZ27l7L0VcHIfpvPklRbBrGvQeXc6ntT1u10T741dV0vRrAzxRKq5nIrarzj
 dotnet_csproj: 
   patch: true 
   file: '**\*.csproj' 
@@ -24,9 +27,8 @@ build:
   verbosity: normal
 build_script:
  - dotnet tool install --global dotnet-sonarscanner
- - dotnet sonarscanner begin /k:"guibranco_CEPAberto" /d:sonar.login="dcd7228a1cdbe91a00ed2e2fb07d4edaa6a0283a"
- - dotnet build ViaCEP.sln
- - dotnet sonarscanner end /d:sonar.login="dcd7228a1cdbe91a00ed2e2fb07d4edaa6a0283a"
+ - dotnet sonarscanner begin /k:"guibranco_CEPAberto" /d:sonar.organization="guibranco-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login=%sonarcloudtoken%
+ - dotnet sonarscanner end /d:sonar.login=%sonarcloudtoken%
 after_build:
 - xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
 - rd /s /q C:\projects\viacep\ViaCEP\bin\Release\

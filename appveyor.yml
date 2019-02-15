@@ -40,6 +40,7 @@ build_script:
  - dotnet build
  - ps: dotnet test .\ViaCEP.Tests\ViaCEP.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
+ - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
 after_build:
 - xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
 - rd /s /q C:\projects\viacep\ViaCEP\bin\Release\

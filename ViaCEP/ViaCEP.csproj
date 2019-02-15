@@ -6,7 +6,7 @@
     <Authors>Guilherme Branco Stracini</Authors>
     <Description>The ViaCEP WebService client for .NET projects</Description>
     <Copyright>© 2019 Guilherme Branco Stracini. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/guibranco/ViaCEP/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/guibranco/ViaCEP</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>

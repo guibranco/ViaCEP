@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCEP", "ViaCEP\ViaCEP.csproj", "{A251D320-410E-48F1-889D-9F59EB8CFEB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCEP.Tests", "ViaCEP.Tests\ViaCEP.Tests.csproj", "{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A251D320-410E-48F1-889D-9F59EB8CFEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A251D320-410E-48F1-889D-9F59EB8CFEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A251D320-410E-48F1-889D-9F59EB8CFEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A251D320-410E-48F1-889D-9F59EB8CFEB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC1987AC-4E78-4CCD-84BC-543F3D7426B4}
+	EndGlobalSection
+EndGlobal

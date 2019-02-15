@@ -43,7 +43,7 @@ build_script:
  - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
 after_build:
 - xcopy %CD%\ViaCEP\bin\Release\netstandard2.0\*.* %CD%\src\
-- xcopy %CD%\ViaCEP\bin\Release\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg %CD%\src\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
+- copy %CD%\ViaCEP\bin\Release\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg %CD%\src\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
 - rd /s /q %CD%\ViaCEP\bin\Release\
 - cd %CD%
 - 7z a -tzip -mx9 "ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip" src

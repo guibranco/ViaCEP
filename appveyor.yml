@@ -20,6 +20,8 @@ dotnet_csproj:
   informational_version: '{version}' 
 before_build:
 - cmd: nuget restore
+- cmd: choco install opencover.portable
+- cmd: choco install codecov
 build:
   publish_nuget: true
   include_nuget_references: true
@@ -32,10 +34,13 @@ build_script:
  /d:sonar.organization="guibranco-github" 
  /d:sonar.host.url="https://sonarcloud.io" 
  /d:sonar.login="$env:SONAR_TOKEN" /v:"$env:APPVEYOR_BUILD_NUMBER" 
- /d:sonar.cs.opencover.reportsPaths="$env:CD\coverage.xml" }'
+ /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
+ /d:sonar.coverage.exclusions="ViaCEP.Tests/**,**/*Tests.cs" 
+ /d:sonar.cs.opencover.reportsPaths="$env:CD\lcov.opencover.xml" }'
  - dotnet build
- - ps: dotnet test .\ViaCEP.Tests\ViaCEP.Tests.csproj
+ - ps: dotnet test .\ViaCEP.Tests\ViaCEP.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
+ - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
 after_build:
 - xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
 - rd /s /q C:\projects\viacep\ViaCEP\bin\Release\

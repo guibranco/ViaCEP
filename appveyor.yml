@@ -9,7 +9,7 @@ skip_commits:
   message: /(Created|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
 environment:
     SONAR_TOKEN: 
-        secure: RInIGZ27l7L0VcHIfpvPklRbBrGvQeXc6ntT1u10T741dV0vRrAzxRKq5nIrarzj
+        secure: etSu7VG74RthV36F93ArbfqMUL3uc8NzQ1KlfCjNFUv/nB11a75c2gS/NtqdeXnG
 dotnet_csproj: 
   patch: true 
   file: '**\*.csproj' 

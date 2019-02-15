@@ -42,9 +42,10 @@ build_script:
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
  - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
 after_build:
-- xcopy C:\projects\viacep\ViaCEP\bin\Release\netstandard2.0\*.* C:\projects\viacep\src\
-- rd /s /q C:\projects\viacep\ViaCEP\bin\Release\
-- cd C:\projects\viacep\
+- xcopy %CD%\ViaCEP\bin\Release\netstandard2.0\*.* %CD%\src\
+- xcopy %CD%\ViaCEP\bin\Release\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg %CD%\src\
+- rd /s /q %CD%\ViaCEP\bin\Release\
+- cd %CD%
 - 7z a -tzip -mx9 "ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip" src
 artifacts:
 - path: ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip

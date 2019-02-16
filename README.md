@@ -50,6 +50,6 @@ foreach(var result in results){
     var address = result.Address;
     var neighborhood = result.Neighborhood;
     var zipCode = result.ZipCode;
-    //do what you need with 'resul' instance of ViaCEPResult.
+    //do what you need with 'result' instance of ViaCEPResult.
 }
 ```

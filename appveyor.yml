@@ -30,10 +30,12 @@ build:
 build_script:
  - dotnet tool install --global dotnet-sonarscanner
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet 
- sonarscanner begin /k:"guibranco_ViaCEP" 
- /d:sonar.organization="guibranco-github" 
+ sonarscanner begin 
+ /k:"guibranco_ViaCEP" 
+ /o:"guibranco-github" 
  /d:sonar.host.url="https://sonarcloud.io" 
- /d:sonar.login="$env:SONAR_TOKEN" /v:"$env:APPVEYOR_BUILD_NUMBER" 
+ /d:sonar.login="$env:SONAR_TOKEN" 
+ /v:"$env:APPVEYOR_BUILD_NUMBER" 
  /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
  /d:sonar.coverage.exclusions="ViaCEP.Tests/**,**/*Tests.cs" 
  /d:sonar.cs.opencover.reportsPaths="$env:CD\ViaCEP.Tests\coverage.opencover.xml" }'

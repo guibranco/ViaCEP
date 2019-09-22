@@ -29,8 +29,10 @@ Install-Package ViaCEP
 ## Usage
 
 The package has two classes:
-- ViaCEPClient - The main class (methods)
-- ViaCEPResult - The result class (data)
+- [ViaCEPClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCEPClient.cs) - The main class (methods)
+- [ViaCEPResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/VIaCEPResult.cs) - The result class (data)
+
+You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
 
 ## Querying by zip code / postal code (single result)
 
@@ -40,8 +42,6 @@ var address = result.Address;
 var neighborhood = result.Neighborhood
 //do what you need with 'result' instance of ViaCEPResult.
 ```
-
-
 ## Querying by addres (list result)
 
 ```cs
@@ -50,6 +50,6 @@ foreach(var result in results){
     var address = result.Address;
     var neighborhood = result.Neighborhood;
     var zipCode = result.ZipCode;
-    //do what you need with 'resul' instance of ViaCEPResult.
+    //do what you need with 'result' instance of ViaCEPResult.
 }
 ```

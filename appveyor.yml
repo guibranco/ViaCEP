@@ -42,21 +42,25 @@ build_script:
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
  - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
 after_build:
-- xcopy %CD%\ViaCEP\bin\Release\netstandard2.0\*.* %CD%\src\
+- xcopy %CD%\ViaCEP\bin\Release\netstandard2.0\*.* %CD%\Build\
 - copy %CD%\ViaCEP\bin\Release\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
 - rd /s /q %CD%\ViaCEP\bin\Release\
 - cd %CD%
-- 7z a -tzip -mx9 "ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip" src
+- 7z a -tzip -mx9 "ViaCEP.%APPVEYOR_BUILD_VERSION%.zip" Build
 artifacts:
-- path: ViaCEP.v%APPVEYOR_BUILD_VERSION%.zip
+- path: ViaCEP.%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile
 - path: ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
   name: Package
 deploy:
 - provider: Environment
   name: NuGet
+    on:
+   branch: master
   artifact: Package
 - provider: GitHub
+  on:
+   branch: master
   tag: $(appveyor_build_version)
   auth_token:
     secure: VgYYJdvNLy/n9/uxxlaF0bMpIIrVxCb+dGr66U9nWfPWSN2ySdfuilO8klAw0uvF

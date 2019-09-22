@@ -12,7 +12,7 @@
     <RepositoryType>GIT</RepositoryType>
     <PackageReleaseNotes>The first release</PackageReleaseNotes>
     <PackageTags>cep zipcode postalcode postal zip address location api webservice brasil brazil correios ibge gia mf fazenda</PackageTags>
-    <PackageIconUrl>https://github.com/guibranco/ViaCEP/blob/master/logo.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/guibranco/ViaCEP/master/logo.png</PackageIconUrl>
 	 <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>

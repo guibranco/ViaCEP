@@ -15,9 +15,9 @@ namespace ViaCEP.Tests
         {
             var result = ViaCEPClient.Search("03177010");
             Assert.NotNull(result);
-            Assert.Equal("Rua Doutor Jo�o Batista de Lacerda", result.Street);
+            Assert.Equal("Rua Doutor João Batista de Lacerda", result.Street);
             Assert.Equal("Quarta Parada", result.Neighborhood);
-            Assert.Equal("S�o Paulo", result.City);
+            Assert.Equal("São Paulo", result.City);
             Assert.Equal("SP", result.StateInitials);
         }
         

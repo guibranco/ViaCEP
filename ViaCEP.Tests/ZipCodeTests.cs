@@ -15,10 +15,23 @@ namespace ViaCEP.Tests
         {
             var result = ViaCEPClient.Search("03177010");
             Assert.NotNull(result);
-            Assert.Equal("Rua Doutor João Batista de Lacerda", result.Street);
+            Assert.Equal("Rua Doutor Joï¿½o Batista de Lacerda", result.Street);
             Assert.Equal("Quarta Parada", result.Neighborhood);
-            Assert.Equal("São Paulo", result.City);
+            Assert.Equal("Sï¿½o Paulo", result.City);
             Assert.Equal("SP", result.StateInitials);
+        }
+        
+        
+        /// <summary>
+        /// Validates if the search by zip code don't throw a exception if the address doesn't have a gia code 
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public void ValidateSearchByZipCodeWithoutGiaCode()
+        {
+            var result = ViaCEPClient.Search("22795641");
+            Assert.NotNull(result);
+            Assert.Null(result.GIACode);
         }
     }
 }

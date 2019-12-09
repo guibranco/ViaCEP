@@ -42,7 +42,7 @@ var address = result.Address;
 var neighborhood = result.Neighborhood
 //do what you need with 'result' instance of ViaCEPResult.
 ```
-## Querying by addres (list result)
+## Querying by address (list result)
 
 ```cs
 var results = ViaCEPClient.Search("SP", "São Paulo", "Avenida Paulista"); //search for the Avenida Paulista in São Paulo / SP

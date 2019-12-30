@@ -87,6 +87,6 @@
         /// The gia code.
         /// </value>
         [JsonProperty("gia")]
-        public Int32 GIACode { get; set; }
+        public Int32? GIACode { get; set; }
     }
 }

@@ -51,6 +51,11 @@ after_build:
 - rd /s /q %CD%\Src\%SOLUTION_NAME%\bin\Release\
 - cd %CD%
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
+after_test:
+- ps: |
+  $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
+  Invoke-WebRequest -Uri 'https://coverage.codacy.com/get.sh' -OutFile get.sh
+  bash get.sh -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 artifacts:
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile

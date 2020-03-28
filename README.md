@@ -47,6 +47,16 @@ The package has two classes:
 - [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepClient.cs) - The main class (methods)
 - [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepResult.cs) - The result class (data)
 
+This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
+
+```
+//your DI container
+services.AddHttpClient<IViaCepClient, ViaCepClient>(client =>{
+    client.BaseAddress = new Uri("https://viacep.com.br/");
+})
+
+```
+
 You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
 
 ## Querying by zip code / postal code (single result)

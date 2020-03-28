@@ -1,12 +1,11 @@
-﻿using Moq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace ViaCep.Tests
+﻿namespace ViaCep.Tests
 {
     using System;
     using System.Linq;
     using Xunit;
+    using Moq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The address tests class.

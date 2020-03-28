@@ -4,6 +4,7 @@ image: Visual Studio 2019
 configuration: Release
 skip_commits:
   message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
+
 environment:
   SOLUTION_NAME: ViaCEP
   SONAR_PROJECT: guibranco_ViaCEP
@@ -14,6 +15,7 @@ environment:
     secure: IEDiCuYBM8BnfdT90PGnvnKGEfHHHgzziGqfoZUUqTi1FgSkBXoMrAGbdLP6jNok
   CODACY_PROJECT_TOKEN:
     secure: AXFZSTVmZQGmLkM8Yw7bkdXLJ0bfQribvyeIYyhmU8rZgVsZ6qmFritTnzDBVIBb
+
 dotnet_csproj: 
   patch: true 
   file: '**\*.csproj' 
@@ -22,15 +24,18 @@ dotnet_csproj:
   assembly_version: '{version}' 
   file_version: '{version}' 
   informational_version: '{version}' 
+
 before_build:
 - cmd: nuget restore
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
+
 build:
   publish_nuget: true
   include_nuget_references: true
   parallel: true
   verbosity: normal
+
 build_script:
  - curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/4.0.5/codacy-coverage-reporter-4.0.5-assembly.jar > ./codacy-test-reporter.jar
  - dotnet tool install --global dotnet-sonarscanner
@@ -50,6 +55,7 @@ build_script:
  - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
  - java -jar ./codacy-test-reporter.jar report -l CSharp -t %CODACY_PROJECT_TOKEN% -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.cobertura.xml"
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
+
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
 - copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
@@ -59,6 +65,7 @@ after_build:
 - cd %CD%
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.Coverage.zip" Coverage
+
 artifacts:
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile
@@ -66,6 +73,7 @@ artifacts:
   name: Package
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.Coverage.zip
   name: Coverage
+
 deploy:
 - provider: Environment
   name: NuGet

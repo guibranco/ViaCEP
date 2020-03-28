@@ -45,10 +45,11 @@ build_script:
  /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
  /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml" }'
  - dotnet build %SOLUTION_NAME%.sln
- - ps: dotnet test .\Tests\$env:SOLUTION_NAME.Tests\$env:SOLUTION_NAME.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
- - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
+ - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
+ - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
  - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
- - java -jar ./codacy-test-reporter.jar report -l CSharp -t ${CODACY_PROJECT_TOKEN} -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+ - java -jar ./codacy-test-reporter.jar report -l CSharp -t ${CODACY_PROJECT_TOKEN} -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.cobertura.xml"
+ - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.0\*.* %CD%\Build\
 - copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg

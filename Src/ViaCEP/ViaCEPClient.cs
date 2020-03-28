@@ -16,10 +16,9 @@
         /// <summary>
         /// The base URL
         /// </summary>
-        private const String BaseUrl = "https://viacep.com.br";
+        private const string BaseUrl = "https://viacep.com.br";
 
         #endregion
-
 
         #region Public methods
 
@@ -28,7 +27,7 @@
         /// </summary>
         /// <param name="zipCode">The zip code.</param>
         /// <returns></returns>
-        public static ViaCEPResult Search(String zipCode)
+        public static ViaCEPResult Search(string zipCode)
         {
             return SearchAsync(zipCode, CancellationToken.None).Result;
         }
@@ -39,7 +38,7 @@
         /// <param name="zipCode">The zip code.</param>
         /// <param name="token">The token.</param>
         /// <returns></returns>
-        public static async Task<ViaCEPResult> SearchAsync(String zipCode, CancellationToken token)
+        public static async Task<ViaCEPResult> SearchAsync(string zipCode, CancellationToken token)
         {
             using (var client = new HttpClient())
             {
@@ -57,7 +56,7 @@
         /// <param name="city">The city.</param>
         /// <param name="address">The address.</param>
         /// <returns></returns>
-        public static IEnumerable<ViaCEPResult> Search(String stateInitials, String city, String address)
+        public static IEnumerable<ViaCEPResult> Search(string stateInitials, string city, string address)
         {
             return SearchAsync(stateInitials, city, address, CancellationToken.None).Result;
         }
@@ -71,9 +70,9 @@
         /// <param name="token">The token.</param>
         /// <returns></returns>
         public static async Task<IEnumerable<ViaCEPResult>> SearchAsync(
-            String stateInitials,
-            String city,
-            String address,
+            string stateInitials,
+            string city,
+            string address,
                     CancellationToken token)
         {
             using (var client = new HttpClient())

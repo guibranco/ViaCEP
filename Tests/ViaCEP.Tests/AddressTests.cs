@@ -24,7 +24,6 @@
             var first = list.First();
             Assert.Equal("SP", first.StateInitials);
             Assert.Equal("São Paulo", first.City);
-
         }
     }
 }

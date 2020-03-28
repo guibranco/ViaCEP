@@ -1,15 +1,17 @@
 version: 2.0.{build}
-branches:
- only:
-   - master
 skip_tags: true
-image: Visual Studio 2017
+image: Visual Studio 2019
 configuration: Release
 skip_commits:
-  message: /(Created|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
+  message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
 environment:
-    SONAR_TOKEN: 
-        secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
+  SOLUTION_NAME: ViaCEP
+  SONAR_PROJECT: guibranco_ViaCEP
+  SONAR_ORGANIZATION: guibranco-github
+  SONAR_TOKEN: 
+    secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
+  GITHUB_TOKEN: 
+    secure: IEDiCuYBM8BnfdT90PGnvnKGEfHHHgzziGqfoZUUqTi1FgSkBXoMrAGbdLP6jNok
 dotnet_csproj: 
   patch: true 
   file: '**\*.csproj' 
@@ -29,30 +31,30 @@ build:
   verbosity: normal
 build_script:
  - dotnet tool install --global dotnet-sonarscanner
- - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet 
- sonarscanner begin 
- /k:"guibranco_ViaCEP" 
- /o:"guibranco-github" 
+ - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & 
+  dotnet sonarscanner begin 
+ /k:"$env:SONAR_PROJECT" 
+ /o:"$env:SONAR_ORGANIZATION" 
  /d:sonar.host.url="https://sonarcloud.io" 
  /d:sonar.login="$env:SONAR_TOKEN" 
  /v:"$env:APPVEYOR_BUILD_NUMBER" 
  /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
- /d:sonar.coverage.exclusions="ViaCEP.Tests/**,**/*Tests.cs" 
- /d:sonar.cs.opencover.reportsPaths="$env:CD\ViaCEP.Tests\coverage.opencover.xml" }'
- - dotnet build
- - ps: dotnet test .\ViaCEP.Tests\ViaCEP.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
+ /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
+ /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml" }'
+ - dotnet build %SOLUTION_NAME%.sln
+ - ps: dotnet test .\Tests\$env:SOLUTION_NAME.Tests\$env:SOLUTION_NAME.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
  - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
- - codecov -f "ViaCEP.Tests\coverage.opencover.xml"
+ - codecov -f "Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml"
 after_build:
-- xcopy %CD%\ViaCEP\bin\Release\netstandard2.0\*.* %CD%\Build\
-- copy %CD%\ViaCEP\bin\Release\ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
-- rd /s /q %CD%\ViaCEP\bin\Release\
+- xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.0\*.* %CD%\Build\
+- copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
+- rd /s /q %CD%\Src\%SOLUTION_NAME%\bin\Release\
 - cd %CD%
-- 7z a -tzip -mx9 "ViaCEP.%APPVEYOR_BUILD_VERSION%.zip" Build
+- 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
 artifacts:
-- path: ViaCEP.%APPVEYOR_BUILD_VERSION%.zip
+- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile
-- path: ViaCEP.%APPVEYOR_BUILD_VERSION%.nupkg
+- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.nupkg
   name: Package
 deploy:
 - provider: Environment
@@ -64,7 +66,6 @@ deploy:
   on:
    branch: master
   tag: $(appveyor_build_version)
-  auth_token:
-    secure: VgYYJdvNLy/n9/uxxlaF0bMpIIrVxCb+dGr66U9nWfPWSN2ySdfuilO8klAw0uvF
+  auth_token: $(GITHUB_TOKEN)
   force_update: true
   artifact: ZipFile

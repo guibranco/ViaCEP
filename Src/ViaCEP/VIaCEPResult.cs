@@ -1,7 +1,6 @@
 ﻿namespace ViaCEP
 {
     using Newtonsoft.Json;
-    using System;
 
     /// <summary>
     /// The Via CEP result class.
@@ -15,7 +14,7 @@
         /// The zip code.
         /// </value>
         [JsonProperty("cep")]
-        public String ZipCode { get; set; }
+        public string ZipCode { get; set; }
 
         /// <summary>
         /// Gets or sets the street.
@@ -24,7 +23,7 @@
         /// The street.
         /// </value>
         [JsonProperty("logradouro")]
-        public String Street { get; set; }
+        public string Street { get; set; }
 
         /// <summary>
         /// Gets or sets the complement.
@@ -33,7 +32,7 @@
         /// The complement.
         /// </value>
         [JsonProperty("complemento")]
-        public String Complement { get; set; }
+        public string Complement { get; set; }
 
         /// <summary>
         /// Gets or sets the neighborhood.
@@ -42,7 +41,7 @@
         /// The neighborhood.
         /// </value>
         [JsonProperty("bairro")]
-        public String Neighborhood { get; set; }
+        public string Neighborhood { get; set; }
 
         /// <summary>
         /// Gets or sets the city.
@@ -51,7 +50,7 @@
         /// The city.
         /// </value>
         [JsonProperty("localidade")]
-        public String City { get; set; }
+        public string City { get; set; }
 
         /// <summary>
         /// Gets or sets the state initials.
@@ -60,7 +59,7 @@
         /// The state initials.
         /// </value>
         [JsonProperty("uf")]
-        public String StateInitials { get; set; }
+        public string StateInitials { get; set; }
 
         /// <summary>
         /// Gets or sets the unit.
@@ -69,7 +68,7 @@
         /// The unit.
         /// </value>
         [JsonProperty("unidade")]
-        public String Unit { get; set; }
+        public string Unit { get; set; }
 
         /// <summary>
         /// Gets or sets the ibge code.
@@ -78,7 +77,7 @@
         /// The ibge code.
         /// </value>
         [JsonProperty("ibge")]
-        public Int32 IBGECode { get; set; }
+        public int IBGECode { get; set; }
 
         /// <summary>
         /// Gets or sets the gia code.
@@ -87,6 +86,6 @@
         /// The gia code.
         /// </value>
         [JsonProperty("gia")]
-        public Int32? GIACode { get; set; }
+        public int? GIACode { get; set; }
     }
 }

@@ -20,8 +20,7 @@ namespace ViaCEP.Tests
             Assert.Equal("São Paulo", result.City);
             Assert.Equal("SP", result.StateInitials);
         }
-        
-        
+
         /// <summary>
         /// Validates if the search by zip code don't throw a exception if the address doesn't have a gia code 
         /// </summary>

@@ -6,6 +6,7 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 ## CI/CD
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0eb414529927424e94dc50a3e23e7108)](https://app.codacy.com/manual/guilherme_9/ViaCEP?utm_source=github.com&utm_medium=referral&utm_content=guibranco/ViaCEP&utm_campaign=Badge_Grade_Settings)
 [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j?svg=true)](https://ci.appveyor.com/project/guibranco/9jnsy1e08jhyxl7j)
 [![SMSDev NuGet Version](https://img.shields.io/nuget/v/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/)
 [![SMSDev NuGet Downloads](https://img.shields.io/nuget/dt/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/)

@@ -1,11 +1,11 @@
-﻿namespace ViaCEP
+﻿namespace ViaCep
 {
     using Newtonsoft.Json;
 
     /// <summary>
     /// The Via CEP result class.
     /// </summary>
-    public sealed class ViaCEPResult
+    public sealed class ViaCepResult
     {
         /// <summary>
         /// Gets or sets the zip code.

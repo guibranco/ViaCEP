@@ -1,24 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <ProjectGuid>A251D320-410E-48F1-889D-9F59EB8CFEB9</ProjectGuid>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Guilherme Branco Stracini</Authors>
-    <Description>The ViaCEP WebService client for .NET projects (both .NET Core and .NET Framework)</Description>
     <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
-    <PackageLicense>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicense>
+    <Description>The ViaCEP WebService client for .NET projects (both .NET Core and .NET Framework)</Description>
     <PackageProjectUrl>https://github.com/guibranco/ViaCEP/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/guibranco/ViaCEP</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageTags>cep zipcode postalcode postal zip address location api webservice brasil brazil correios ibge gia mf fazenda</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/guibranco/ViaCEP/master/logo.png?v=1</PackageIconUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageLicenseUrl>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="../../logo.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>

@@ -44,15 +44,25 @@ Install-Package ViaCEP
 
 The package has two classes:
 
-- [ViaCEPClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCEPClient.cs) - The main class (methods)
-- [ViaCEPResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/VIaCEPResult.cs) - The result class (data)
+- [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepClient.cs) - The main class (methods)
+- [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepResult.cs) - The result class (data)
+
+This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
+
+```
+//your DI container
+services.AddHttpClient<IViaCepClient, ViaCepClient>(client =>{
+    client.BaseAddress = new Uri("https://viacep.com.br/");
+})
+
+```
 
 You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
 
 ## Querying by zip code / postal code (single result)
 
 ```cs
-var result = ViaCEPClient.Search("01234567"); //searches for the postal code 01234-567
+var result = new ViaCepClient().Search("01234567"); //searches for the postal code 01234-567
 var address = result.Address;
 var neighborhood = result.Neighborhood
 //do what you need with 'result' instance of ViaCEPResult.
@@ -61,7 +71,7 @@ var neighborhood = result.Neighborhood
 ## Querying by address (list result)
 
 ```cs
-var results = ViaCEPClient.Search("SP", "São Paulo", "Avenida Paulista"); //search for the Avenida Paulista in São Paulo / SP
+var results = new ViaCepClient().Search("SP", "São Paulo", "Avenida Paulista"); //search for the Avenida Paulista in São Paulo / SP
 foreach(var result in results){
     var address = result.Address;
     var neighborhood = result.Neighborhood;

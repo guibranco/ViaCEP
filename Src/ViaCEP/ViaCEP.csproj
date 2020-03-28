@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Guilherme Branco Stracini</Authors>
-    <Description>The ViaCEP WebService client for .NET projects</Description>
+    <Description>The ViaCEP WebService client for .NET projects (both .NET Core and .NET Framework)</Description>
     <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
     <PackageLicense>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/guibranco/ViaCEP/</PackageProjectUrl>

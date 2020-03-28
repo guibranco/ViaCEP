@@ -1,4 +1,4 @@
-﻿namespace ViaCEP
+﻿namespace ViaCep
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     /// <summary>
     /// The Via CEP client class.
     /// </summary>
-    public static class ViaCEPClient
+    public class ViaCepClient : IViaCepClient
     {
         #region Private fields
 
@@ -17,6 +17,33 @@
         /// The base URL
         /// </summary>
         private const string BaseUrl = "https://viacep.com.br";
+
+        /// <summary>
+        /// The HTTP client
+        /// </summary>
+        private readonly HttpClient _httpClient;
+
+        #endregion
+
+        #region ~Ctors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViaCepClient"/> class.
+        /// </summary>
+        public ViaCepClient()
+        {
+            _httpClient = HttpClientFactory.Create();
+            _httpClient.BaseAddress = new Uri(BaseUrl);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViaCepClient"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
+        public ViaCepClient(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
 
         #endregion
 
@@ -27,7 +54,7 @@
         /// </summary>
         /// <param name="zipCode">The zip code.</param>
         /// <returns></returns>
-        public static ViaCEPResult Search(string zipCode)
+        public ViaCepResult Search(string zipCode)
         {
             return SearchAsync(zipCode, CancellationToken.None).Result;
         }
@@ -38,15 +65,11 @@
         /// <param name="zipCode">The zip code.</param>
         /// <param name="token">The token.</param>
         /// <returns></returns>
-        public static async Task<ViaCEPResult> SearchAsync(string zipCode, CancellationToken token)
+        public async Task<ViaCepResult> SearchAsync(string zipCode, CancellationToken token)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(BaseUrl);
-                var response = await client.GetAsync($"/ws/{zipCode}/json", token).ConfigureAwait(false);
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsAsync<ViaCEPResult>(token).ConfigureAwait(false);
-            }
+            var response = await _httpClient.GetAsync($"/ws/{zipCode}/json", token).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<ViaCepResult>(token).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -56,7 +79,7 @@
         /// <param name="city">The city.</param>
         /// <param name="address">The address.</param>
         /// <returns></returns>
-        public static IEnumerable<ViaCEPResult> Search(string stateInitials, string city, string address)
+        public IEnumerable<ViaCepResult> Search(string stateInitials, string city, string address)
         {
             return SearchAsync(stateInitials, city, address, CancellationToken.None).Result;
         }
@@ -69,19 +92,15 @@
         /// <param name="address">The address.</param>
         /// <param name="token">The token.</param>
         /// <returns></returns>
-        public static async Task<IEnumerable<ViaCEPResult>> SearchAsync(
+        public async Task<IEnumerable<ViaCepResult>> SearchAsync(
             string stateInitials,
             string city,
             string address,
                     CancellationToken token)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(BaseUrl);
-                var response = await client.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", token).ConfigureAwait(false);
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsAsync<List<ViaCEPResult>>(token).ConfigureAwait(false);
-            }
+            var response = await _httpClient.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", token).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<List<ViaCepResult>>(token).ConfigureAwait(false);
         }
 
         #endregion

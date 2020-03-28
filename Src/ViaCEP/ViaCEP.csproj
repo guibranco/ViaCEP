@@ -13,12 +13,17 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageTags>cep zipcode postalcode postal zip address location api webservice brasil brazil correios ibge gia mf fazenda</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/guibranco/ViaCEP/master/logo.png?v=1</PackageIconUrl>
+    <PackageIcon>logo.png</PackageIcon>
     <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <PackageLicenseUrl>https://github.com/guibranco/ViaCEP/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="../../logo.png" Pack="true" PackagePath="\"/>
+</ItemGroup>
 </Project>

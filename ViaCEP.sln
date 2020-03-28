@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -7,9 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{A8E8D875-205
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{474F8215-8B66-4E36-927C-E078635C7996}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViaCEP", "Src\ViaCEP\ViaCEP.csproj", "{A251D320-410E-48F1-889D-9F59EB8CFEB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViaCEP", "Src\ViaCep\ViaCep.csproj", "{A251D320-410E-48F1-889D-9F59EB8CFEB9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViaCEP.Tests", "Tests\ViaCEP.Tests\ViaCEP.Tests.csproj", "{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViaCEP.Tests", "Tests\ViaCep.Tests\ViaCEP.Tests.csproj", "{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A1303EA-8DFA-48C6-A96D-EC71AE4EC0E8}"
 	ProjectSection(SolutionItems) = preProject

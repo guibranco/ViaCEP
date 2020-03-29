@@ -55,12 +55,15 @@ The package has two classes:
 
 This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
 
-```
+```cs
 //your DI container
-services.AddHttpClient<IViaCepClient, ViaCepClient>(client =>{
+services.AddHttpClient<IViaCepClient, ViaCepClient>(client => {
     client.BaseAddress = new Uri("https://viacep.com.br/");
-})
+});
 
+//then use in your domain service, handler, controller...
+var viaCepClient = container.GetService<IViaCepClient>();
+var result = await viaCepClient.SearchAsync("01001000", cancellationToken);
 ```
 
 You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
@@ -68,9 +71,9 @@ You can search using the zip code/postal code (AKA CEP) or using the address dat
 ## Querying by zip code / postal code (single result)
 
 ```cs
-var result = new ViaCepClient().Search("01234567"); //searches for the postal code 01234-567
-var address = result.Address;
-var neighborhood = result.Neighborhood
+var result = new ViaCepClient().Search("01001000"); //searches for the postal code 01001-000
+var address = result.Address; //Praça da Sé
+var city = reuslt.City; //São Paulo
 //do what you need with 'result' instance of ViaCEPResult.
 ```
 

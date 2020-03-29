@@ -32,7 +32,13 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 ---
 
-NuGet package: https://www.nuget.org/packages/ViaCEP
+## Installation
+
+Download the latest zip file from the [Release pages](https://github.com/guibranco/ViaCEP/releases) or simple install from [NuGet](https://www.nuget.org/packages/ViaCEP) package manager
+
+NuGet URL: https://www.nuget.org/packages/ViaCEP
+
+NuGet installation via *Package Manager Console*:
 
 ```ps
 Install-Package ViaCEP

@@ -60,19 +60,6 @@
         }
 
         /// <summary>
-        /// Searches the asynchronous.
-        /// </summary>
-        /// <param name="zipCode">The zip code.</param>
-        /// <param name="token">The token.</param>
-        /// <returns></returns>
-        public async Task<ViaCepResult> SearchAsync(string zipCode, CancellationToken token)
-        {
-            var response = await _httpClient.GetAsync($"/ws/{zipCode}/json", token).ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<ViaCepResult>(token).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Searches the specified state initials.
         /// </summary>
         /// <param name="stateInitials">The state initials.</param>
@@ -87,20 +74,30 @@
         /// <summary>
         /// Searches the asynchronous.
         /// </summary>
+        /// <param name="zipCode">The zip code.</param>
+        /// <param name="cancellationToken">The token.</param>
+        /// <returns></returns>
+        public async Task<ViaCepResult> SearchAsync(string zipCode, CancellationToken cancellationToken)
+        {
+            var response = await _httpClient.GetAsync($"/ws/{zipCode}/json", cancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<ViaCepResult>(cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Searches the asynchronous.
+        /// </summary>
         /// <param name="stateInitials">The state initials.</param>
         /// <param name="city">The city.</param>
         /// <param name="address">The address.</param>
-        /// <param name="token">The token.</param>
+        /// <param name="cancellationToken">The token.</param>
         /// <returns></returns>
         public async Task<IEnumerable<ViaCepResult>> SearchAsync(
-            string stateInitials,
-            string city,
-            string address,
-                    CancellationToken token)
+            string stateInitials, string city, string address, CancellationToken cancellationToken)
         {
-            var response = await _httpClient.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", token).ConfigureAwait(false);
+            var response = await _httpClient.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<List<ViaCepResult>>(token).ConfigureAwait(false);
+            return await response.Content.ReadAsAsync<List<ViaCepResult>>(cancellationToken).ConfigureAwait(false);
         }
 
         #endregion

@@ -7,8 +7,6 @@ skip_commits:
 
 environment:
   SOLUTION_NAME: ViaCEP
-  SONAR_PROJECT: guibranco_ViaCEP
-  SONAR_ORGANIZATION: guibranco-github
   SONAR_TOKEN: 
     secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
   GITHUB_TOKEN: 
@@ -26,9 +24,13 @@ dotnet_csproj:
   informational_version: '{version}' 
 
 before_build:
+- ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
+- ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$","-github"
 - cmd: nuget restore
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
+- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/7.6.5/codacy-coverage-reporter-assembly-7.6.5.jar > ./codacy-test-reporter.jar
+- cmd: dotnet tool install --global dotnet-sonarscanner
 
 build:
   publish_nuget: true
@@ -37,9 +39,7 @@ build:
   verbosity: normal
 
 build_script:
- - curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/4.0.5/codacy-coverage-reporter-4.0.5-assembly.jar > ./codacy-test-reporter.jar
- - dotnet tool install --global dotnet-sonarscanner
- - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & 
+- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
   dotnet sonarscanner begin 
  /k:"$env:SONAR_PROJECT" 
  /o:"$env:SONAR_ORGANIZATION" 
@@ -49,12 +49,21 @@ build_script:
  /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
  /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
  /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml" }'
- - dotnet build %SOLUTION_NAME%.sln
- - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
- - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
- - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
- - java -jar ./codacy-test-reporter.jar report -l CSharp -t %CODACY_PROJECT_TOKEN% -r %CD%\Tests\%SOLUTION_NAME%.Tests\coverage.cobertura.xml
- - ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { & dotnet sonarscanner end /d:sonar.login="$env:SONAR_TOKEN" }'
+- dotnet build %SOLUTION_NAME%.sln
+- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj 
+ /p:CollectCoverage=true 
+ /p:CoverletOutputFormat="opencover"
+- codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+- java 
+ -jar 
+ -Dlogback.configurationFile="%CD%\Build\logback.xml" 
+ ./codacy-test-reporter.jar report 
+ -l CSharp 
+ -t %CODACY_PROJECT_TOKEN% 
+ -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
+ dotnet sonarscanner end 
+ /d:sonar.login="$env:SONAR_TOKEN" }'
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\

@@ -56,7 +56,6 @@ build_script:
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - java 
  -jar 
- -Dlogback.configurationFile="%CD%\Build\logback.xml" 
  ./codacy-test-reporter.jar report 
  -l CSharp 
  -t %CODACY_PROJECT_TOKEN% 

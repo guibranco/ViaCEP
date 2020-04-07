@@ -29,7 +29,7 @@ before_build:
 - cmd: nuget restore
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
-- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/7.6.5/codacy-coverage-reporter-assembly-7.6.5.jar > ./codacy-test-reporter.jar
+- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/7.7.0/codacy-coverage-reporter-assembly-7.7.0.jar > ./codacy-test-reporter.jar
 - cmd: dotnet tool install --global dotnet-sonarscanner
 
 build:
@@ -56,7 +56,6 @@ build_script:
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - java 
  -jar 
- -Dlogback.configurationFile="%CD%\Build\logback.xml" 
  ./codacy-test-reporter.jar report 
  -l CSharp 
  -t %CODACY_PROJECT_TOKEN% 

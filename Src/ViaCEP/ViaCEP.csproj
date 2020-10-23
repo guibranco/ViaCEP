@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <ProjectGuid>A251D320-410E-48F1-889D-9F59EB8CFEB9</ProjectGuid>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Guilherme Branco Stracini</Authors>
     <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
     <Description>The ViaCEP WebService client for .NET projects (both .NET Core and .NET Framework)</Description>
-    <PackageProjectUrl>https://github.com/guibranco/ViaCEP/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/guibranco/ViaCEP</RepositoryUrl>
+    <PackageProjectUrl>https://guibranco.github.io/ViaCEP/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/guibranco/ViaCEP/</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>cep zipcode postalcode postal zip address location api webservice brasil brazil correios ibge gia mf fazenda</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/guibranco/ViaCEP/master/logo.png?v=1</PackageIconUrl>

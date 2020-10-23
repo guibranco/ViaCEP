@@ -2,15 +2,18 @@
 
 A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP API](https://viacep.com.br)
 
+[![GitHub license](https://img.shields.io/github/license/guibranco/ViaCep)](https://github.com/guibranco/ViaCep)
+[![time tracker](https://wakatime.com/badge/github/guibranco/ViaCEP.svg)](https://wakatime.com/badge/github/guibranco/ViaCEP)
+
 ![Via CEP](https://raw.githubusercontent.com/guibranco/viacep/master/logo.png)
+
 
 ## CI/CD
 
-[![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j?svg=true)](https://ci.appveyor.com/project/guibranco/9jnsy1e08jhyxl7j)
-[![SMSDev NuGet Version](https://img.shields.io/nuget/v/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/)
-[![SMSDev NuGet Downloads](https://img.shields.io/nuget/dt/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/)
-[![Github All Releases](https://img.shields.io/github/downloads/guibranco/ViaCEP/total.svg?style=flat)](https://github.com/guibranco/ViaCEP)
-[![Last release](https://img.shields.io/github/release-date/guibranco/ViaCEP.svg?style=flat)](https://github.com/guibranco/ViaCEP)
+| Branch | Build status | Last commit | Tests |
+|--------|--------------|-------------|-------|
+| Master | [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/master)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/master?compact_message) |
+| Develop | [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/develop?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP/branch/develop) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/develop)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/develop?compact_message) |
 
 ## Code Quality
 
@@ -34,15 +37,17 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 ## Installation
 
-Download the latest zip file from the [Release pages](https://github.com/guibranco/ViaCEP/releases) or simple install from [NuGet](https://www.nuget.org/packages/ViaCEP) package manager
+### Github Releases
 
-NuGet URL: https://www.nuget.org/packages/ViaCEP
+[![GitHub last release](https://img.shields.io/github/release-date/guibranco/ViaCEP.svg?style=flat)](https://github.com/guibranco/ViaCEP) [![Github All Releases](https://img.shields.io/github/downloads/guibranco/ViaCEP/total.svg?style=flat)](https://github.com/guibranco/ViaCEP)
 
-NuGet installation via *Package Manager Console*:
+Download the latest zip file from the [Release](https://github.com/GuiBranco/ViaCEP/releases) page.
 
-```ps
-Install-Package ViaCEP
-```
+### Nuget package manager
+
+| Package | Version | Downloads |
+|------------------|:-------:|:-------:|
+| **ViaCEP** | [![ViaCEP NuGet Version](https://img.shields.io/nuget/v/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/) | [![ViaCEP NuGet Downloads](https://img.shields.io/nuget/dt/ViaCEP.svg?style=flat)](https://www.nuget.org/packages/ViaCEP/) |
 
 ---
 
@@ -57,9 +62,7 @@ This package is fully compatible with Dependency Injection. Use the interface *I
 
 ```cs
 //your DI container
-services.AddHttpClient<IViaCepClient, ViaCepClient>(client => {
-    client.BaseAddress = new Uri("https://viacep.com.br/");
-});
+services.AddHttpClient<IViaCepClient, ViaCepClient>(client => { client.BaseAddress = new Uri("https://viacep.com.br/"); });
 
 //then use in your domain service, handler, controller...
 var viaCepClient = container.GetService<IViaCepClient>();
@@ -68,7 +71,7 @@ var result = await viaCepClient.SearchAsync("01001000", cancellationToken);
 
 You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
 
-## Querying by zip code / postal code (single result)
+### Querying by zip code / postal code (single result)
 
 ```cs
 var result = new ViaCepClient().Search("01001000"); //searches for the postal code 01001-000
@@ -77,7 +80,7 @@ var city = reuslt.City; //São Paulo
 //do what you need with 'result' instance of ViaCEPResult.
 ```
 
-## Querying by address (list result)
+### Querying by address (list result)
 
 ```cs
 var results = new ViaCepClient().Search("SP", "São Paulo", "Avenida Paulista"); //search for the Avenida Paulista in São Paulo / SP
@@ -88,3 +91,8 @@ foreach(var result in results){
     //do what you need with 'result' instance of ViaCEPResult.
 }
 ```
+
+## Changelog
+
+- 2020-10-23 - Version 3.1:
+    - Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above - [@guibranco](https://github.com/guibranco) 

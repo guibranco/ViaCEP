@@ -4,8 +4,6 @@ image: Visual Studio 2019
 configuration: Release
 skip_commits:
   message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
-pull_requests:
-  do_not_increment_build_number: true
 
 environment:
   SOLUTION_NAME: ViaCEP

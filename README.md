@@ -54,8 +54,8 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/Via
 
 The package has two classes:
 
-- [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepClient.cs): The main class (methods)
-- [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepResult.cs): The result class (data)
+-  [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepClient.cs): The main class (methods).
+-  [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/master/ViaCEP/ViaCepResult.cs): The result class (data).
 
 This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
 
@@ -93,5 +93,5 @@ foreach(var result in results){
 
 ## Changelog
 
-- 2021-06-21 [Version 3.2]: Update dependencies version. [@guibranco](https://github.com/guibranco)
-- 2020-10-23 [Version 3.1]: Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)
+-  2021-06-21: Update dependencies version. [@guibranco](https://github.com/guibranco)
+-  2020-10-23: Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)

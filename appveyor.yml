@@ -10,7 +10,7 @@ environment:
   SONAR_TOKEN: 
     secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
   GITHUB_TOKEN: 
-    secure: IEDiCuYBM8BnfdT90PGnvnKGEfHHHgzziGqfoZUUqTi1FgSkBXoMrAGbdLP6jNok
+    secure: AD1z81FqZlvGkCEyDzJ3g6sIJ93ecUE9EuqfUxc4CMiFGW139pWZk+/huuTY5jzG
   CODACY_PROJECT_TOKEN:
     secure: Dz2jqsK+hAKCFEGgumfJORPt5Ka6/X7UMR5RyG10etlqiGkUH7TSrGtdFlnjaZm1
 

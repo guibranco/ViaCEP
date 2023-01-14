@@ -9,10 +9,9 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 ## CI/CD
 
-| Branch | Build status | Last commit | Tests |
-|--------|--------------|-------------|-------|
-| Master | [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/master)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/master?compact_message) |
-| Develop | [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/develop?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP/branch/develop) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/develop)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/develop?compact_message) |
+| Build status | Last commit | Tests |
+|--------------|-------------|-------|
+| [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/master)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/master?compact_message) |
 
 ## Code Quality
 

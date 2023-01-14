@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
-using RichardSzalay.MockHttp;
-using Xunit;
-
-namespace ViaCep.Tests
+﻿namespace ViaCep.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Net.Http;
+    using RichardSzalay.MockHttp;
+    using Xunit;
+
     /// <summary>
-    /// 
+    /// The coverage tests class.
     /// </summary>
     public class CoverageTests
     {

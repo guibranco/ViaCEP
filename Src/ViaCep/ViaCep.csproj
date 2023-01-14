@@ -3,9 +3,10 @@
   <PropertyGroup>
     <ProjectGuid>A251D320-410E-48F1-889D-9F59EB8CFEB9</ProjectGuid>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Guilherme Branco Stracini</Authors>
-    <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
+    <Copyright>© 2020 - 2023 Guilherme Branco Stracini. All rights reserved.</Copyright>
     <Description>The ViaCep API/WebService client for .NET projects (both .NET Core and .NET Framework)</Description>
     <PackageProjectUrl>https://guibranco.github.io/ViaCEP/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/guibranco/ViaCEP/</RepositoryUrl>

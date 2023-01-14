@@ -1,20 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : ViaCep.Tests
-// Author           : Guilherme Branco Stracini
-// Created          : 10-23-2020
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 10-23-2020
-// ***********************************************************************
-// <copyright file="ResultsFixture.cs" company="Guilherme Branco Stracini ME">
-//     Copyright (c) Guilherme Branco Stracini ME. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System.Collections.Generic;
-
-namespace ViaCep.Tests
+﻿namespace ViaCep.Tests
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Class ResultsFixture.
     /// </summary>

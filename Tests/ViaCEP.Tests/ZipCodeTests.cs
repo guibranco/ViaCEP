@@ -1,10 +1,9 @@
-using Moq;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace ViaCep.Tests
 {
+    using Moq;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Xunit;
 
     /// <summary>

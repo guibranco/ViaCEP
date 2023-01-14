@@ -1,4 +1,4 @@
-version: 3.2.{build}
+version: 4.1.{build}
 skip_tags: true
 image: Visual Studio 2019
 configuration: Release
@@ -24,9 +24,9 @@ dotnet_csproj:
   informational_version: '{version}' 
 
 init:
-- set PATH=C:\Program Files\Java\jdk15\bin;%PATH%
+- SET JAVA_HOME=C:\Program Files\Java\jdk15
+- SET PATH=%JAVA_HOME%\bin;%PATH%
 - set JAVA_HOME_11_X64=C:\Program Files\Java\jdk15
-- set JAVA_HOME=C:\Program Files\Java\jdk15
 
 before_build:
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
@@ -34,7 +34,7 @@ before_build:
 - cmd: nuget restore
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
-- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/12.2.0/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
+- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/13.11.17/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
 - cmd: dotnet tool install --global dotnet-sonarscanner
 
 build:
@@ -44,16 +44,30 @@ build:
   verbosity: normal
 
 build_script:
-- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
-  dotnet sonarscanner begin 
- /k:"$env:SONAR_PROJECT" 
- /o:"$env:SONAR_ORGANIZATION" 
- /d:sonar.host.url="https://sonarcloud.io" 
- /d:sonar.login="$env:SONAR_TOKEN" 
- /v:"$env:APPVEYOR_BUILD_NUMBER" 
- /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
- /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
- /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml" }'
+- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { &
+        dotnet sonarscanner begin 
+         /k:"$env:SONAR_PROJECT" 
+         /o:"$env:SONAR_ORGANIZATION" 
+         /d:sonar.branch.name="$env:APPVEYOR_REPO_BRANCH"
+         /d:sonar.host.url="https://sonarcloud.io" 
+         /d:sonar.login="$env:SONAR_TOKEN" 
+         /v:"$env:APPVEYOR_BUILD_NUMBER" 
+         /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
+         /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
+         /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml"
+    }'
+- ps: 'if ($env:APPVEYOR_PULL_REQUEST_NUMBER) { &
+        dotnet sonarscanner begin 
+         /k:"$env:SONAR_PROJECT" 
+         /o:"$env:SONAR_ORGANIZATION" 
+         /d:sonar.pullrequest.key="$env:APPVEYOR_PULL_REQUEST_NUMBER"
+         /d:sonar.host.url="https://sonarcloud.io" 
+         /d:sonar.login="$env:SONAR_TOKEN" 
+         /v:"$env:APPVEYOR_BUILD_NUMBER" 
+         /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
+         /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
+         /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml"
+    }'
 - dotnet build %SOLUTION_NAME%.sln
 - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj 
  /p:CollectCoverage=true 
@@ -65,9 +79,7 @@ build_script:
  -l CSharp 
  -t %CODACY_PROJECT_TOKEN% 
  -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
-- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
- dotnet sonarscanner end 
- /d:sonar.login="$env:SONAR_TOKEN" }'
+- dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.0\*.* %CD%\Build\
@@ -82,8 +94,10 @@ after_build:
 artifacts:
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
   name: ZipFile
+
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.nupkg
   name: Package
+
 - path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.Coverage.zip
   name: Coverage
 
@@ -93,6 +107,7 @@ deploy:
   on:
    branch: master
   artifact: Package
+  
 - provider: GitHub
   on:
    branch: master

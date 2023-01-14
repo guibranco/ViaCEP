@@ -6,7 +6,7 @@ skip_commits:
   message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
 
 environment:
-  SOLUTION_NAME: ViaCEP
+  SOLUTION_NAME: ViaCep
   SONAR_TOKEN: 
     secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
   GITHUB_TOKEN: 

@@ -9,25 +9,25 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 ## CI/CD
 
-| Build status | Last commit | Tests |
-|--------------|-------------|-------|
-| [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/master)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/master?compact_message) |
+| Build status | Last commit | Tests | Coverage | Code Smells | LOC |
+|--------------|-------------|-------|----------|-------------|-----|
+| [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/master)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/master?compact_message) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP) | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP) | [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
+
 
 ## Code Quality
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/guibranco/ViaCEP/branch/master/graph/badge.svg)](https://codecov.io/gh/guibranco/ViaCEP)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
+
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=sqale_index)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=security_rating)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
+
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 

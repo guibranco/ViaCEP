@@ -17,6 +17,7 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 ## Code Quality
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/guibranco/ViaCEP/branch/master/graph/badge.svg)](https://codecov.io/gh/guibranco/ViaCEP)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)

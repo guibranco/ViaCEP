@@ -1,6 +1,6 @@
 version: 4.1.{build}
 skip_tags: true
-image: Visual Studio 2019
+image: Visual Studio 2022
 configuration: Release
 skip_commits:
   message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
@@ -24,9 +24,8 @@ dotnet_csproj:
   informational_version: '{version}' 
 
 init:
-- SET JAVA_HOME=C:\Program Files\Java\jdk15
+- SET JAVA_HOME=C:\Program Files\Java\jdk19
 - SET PATH=%JAVA_HOME%\bin;%PATH%
-- set JAVA_HOME_11_X64=C:\Program Files\Java\jdk15
 
 before_build:
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
@@ -34,7 +33,7 @@ before_build:
 - cmd: nuget restore
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
-- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/download/13.11.17/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
+- cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/latest/download/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
 - cmd: dotnet tool install --global dotnet-sonarscanner
 
 build:
@@ -83,11 +82,16 @@ build_script:
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.0\*.* %CD%\Build\
+
 - copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
+
 - rd /s /q %CD%\Src\%SOLUTION_NAME%\bin\Release\
+
 - xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.xml %CD%\Coverage\
 - xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.json %CD%\Coverage\
+
 - cd %CD%
+
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.Coverage.zip" Coverage
 

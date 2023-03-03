@@ -109,12 +109,12 @@ deploy:
 - provider: Environment
   name: NuGet
   on:
-   branch: master
+   branch: main
   artifact: Package
   
 - provider: GitHub
   on:
-   branch: master
+   branch: main
   tag: $(appveyor_build_version)
   auth_token: $(GITHUB_TOKEN)
   force_update: true

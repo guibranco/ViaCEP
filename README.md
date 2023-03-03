@@ -13,7 +13,6 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 |--------------|-------------|-------|----------|-------------|-----|
 | [![Build status](https://ci.appveyor.com/api/projects/status/9jnsy1e08jhyxl7j/branch/main?svg=true)](https://ci.appveyor.com/project/guibranco/ViaCEP) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/ViaCEP/main)](https://github.com/guibranco/ViaCEP) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/ViaCEP/main?compact_message) | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP) | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP) | [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 
-
 ## Code Quality
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
@@ -54,8 +53,8 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/Via
 
 The package has two classes:
 
--  [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepClient.cs): The main class (methods).
--  [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepResult.cs): The result class (data).
+ - [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepClient.cs): The main class (methods).
+ - [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepResult.cs): The result class (data).
 
 This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
 
@@ -93,5 +92,6 @@ foreach(var result in results){
 
 ## Changelog
 
--  2021-06-21: Update dependencies version. [@guibranco](https://github.com/guibranco)
--  2020-10-23: Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)
+ - 2023-03-03: Update dependencies, change branch name, update logo. [@guibranco](https://github.com/guibranco)
+ - 2021-06-21: Update dependencies version. [@guibranco](https://github.com/guibranco)
+ - 2020-10-23: Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)

@@ -2,8 +2,6 @@ version: 4.1.{build}
 skip_tags: true
 image: Visual Studio 2022
 configuration: Release
-skip_commits:
-  message: /(Create|Update).*\.(png|jpg|jpeg|bmp|gif|md)/
 
 environment:
   SOLUTION_NAME: ViaCep

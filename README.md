@@ -17,7 +17,9 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/483c4901f0ea4a0d99e69be931ced362)](https://www.codacy.com/gh/guibranco/ViaCEP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/ViaCEP&amp;utm_campaign=Badge_Grade)
+
 [![codecov](https://codecov.io/gh/guibranco/ViaCEP/branch/main/graph/badge.svg)](https://codecov.io/gh/guibranco/ViaCEP)
+[![CodeFactor](https://www.codefactor.io/repository/github/guibranco/ViaCEP/badge)](https://www.codefactor.io/repository/github/guibranco/ViaCEP)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/93ba8c7ae3e86ca7e2a7/maintainability)](https://codeclimate.com/github/guibranco/ViaCEP/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/93ba8c7ae3e86ca7e2a7/test_coverage)](https://codeclimate.com/github/guibranco/ViaCEP/test_coverage)

@@ -2,9 +2,11 @@ name: Label based on PR size
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   size-label:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:

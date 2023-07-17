@@ -4,11 +4,8 @@ image: Visual Studio 2022
 configuration: Release
 
 environment:
-  SOLUTION_NAME: ViaCep
   SONAR_TOKEN: 
     secure: b45J8d8RnM19gldF3sJX6UGacdYRXvyTYpubf1YUrGdHXZi+90NOtstyftjLXMSO
-  GITHUB_TOKEN: 
-    secure: AD1z81FqZlvGkCEyDzJ3g6sIJ93ecUE9EuqfUxc4CMiFGW139pWZk+/huuTY5jzG
   CODACY_PROJECT_TOKEN:
     secure: Dz2jqsK+hAKCFEGgumfJORPt5Ka6/X7UMR5RyG10etlqiGkUH7TSrGtdFlnjaZm1
   CODECLIMATE_TOKEN:
@@ -28,6 +25,7 @@ init:
 - SET PATH=%JAVA_HOME%\bin;%PATH%
 
 before_build:
+- ps: $env:SOLUTION_NAME = $([io.path]::GetFileNameWithoutExtension($(Get-ChildItem -Path .\* -Include *.sln)))
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
 - ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$","-github"
 - cmd: nuget restore
@@ -49,13 +47,20 @@ build_script:
 - ps: $Params += "/d:sonar.exclusions=`"**/bin/**/*,**/obj/**/*`"", "/d:sonar.coverage.exclusions=`"**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs`""
 - ps: $Params += "/d:sonar.cs.opencover.reportsPaths=`"$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml`""
 - ps: if(-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.branch.name=`"$env:APPVEYOR_REPO_BRANCH`"" }
-- ps: if($env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER" }
+- ps: if($env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER", "/d:sonar.pullrequest.branch=`"$env:APPVEYOR_REPO_BRANCH`"" }
 - ps: Start-process "dotnet" "sonarscanner begin $($Params -join ' ')"
 - codeclimate-test-reporter before-build
 - dotnet build %SOLUTION_NAME%.sln
-- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
-- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="lcov"
-- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
+- ps: $testProjects = (Get-ChildItem -Path .\Tests\**\ -Recurse -Include *.csproj).Fullname
+- ps: $coverletFormats = @('cobertura', 'lcov', 'opencover')
+- ps: |
+    foreach($testProject in $testProjects)
+    {
+        foreach($coverletFormat in $coverletFormats)
+        {
+           dotnet test $testProject /p:CollectCoverage=true /p:CoverletOutputFormat="$coverletFormat"
+        }
+    }
 - codeclimate-test-reporter format-coverage -t lcov -o "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climate.json" "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.info"
 - codeclimate-test-reporter upload-coverage -i "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climate.json" -r %CODECLIMATE_TOKEN%
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
@@ -89,24 +94,18 @@ artifacts:
   name: Coverage
 
 deploy:
-- provider: Environment
-  name: NuGet
+- provider: NuGet
+  api_key: $(NUGET_TOKEN)
+  skip_symbols: false
   on:
    branch: main
   artifact: Package
-  
+
 - provider: GitHub
   on:
    branch: main
-  tag: $(appveyor_build_version)
+  tag: v$(appveyor_build_version)
+  description: 'Release of $(SOLUTION_NAME) - v($appveyor_build_version)'
   auth_token: $(GITHUB_TOKEN)
   force_update: true
-  artifact: ZipFile
-  
-- provider: GitHub
-  on:
-   branch: main
-  tag: $(appveyor_build_version)
-  auth_token: $(GITHUB_TOKEN)
-  force_update: true
-  artifact: Coverage
+  artifact: ZipFile, Package, Coverage

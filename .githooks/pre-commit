@@ -16,3 +16,5 @@ fi
 dotnet tool restore
 
 dotnet csharpier . --check
+
+exit 1

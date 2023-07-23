@@ -32,12 +32,14 @@
         [Fact]
         public void ValidateSearchByZipCodeCoverage()
         {
-            const string resultData = "{'cep': '01001-000','logradouro': 'Praça da Sé','complemento': 'lado ímpar','bairro': 'Sé','localidade': 'São Paulo','uf': 'SP','unidade': '','ibge': '3550308','gia': '1004'}";
+            const string resultData =
+                "{'cep': '01001-000','logradouro': 'Praça da Sé','complemento': 'lado ímpar','bairro': 'Sé','localidade': 'São Paulo','uf': 'SP','unidade': '','ibge': '3550308','gia': '1004'}";
             var httpClientMock = new MockHttpMessageHandler();
-            httpClientMock.When("https://viacep.com.br/ws/*/json")
-                          .Respond("application/json", resultData);
-                                   
-            var httpClient = new HttpClient(httpClientMock) {BaseAddress = _baseUrl};
+            httpClientMock
+                .When("https://viacep.com.br/ws/*/json")
+                .Respond("application/json", resultData);
+
+            var httpClient = new HttpClient(httpClientMock) { BaseAddress = _baseUrl };
             var client = new ViaCepClient(httpClient);
 
             var result = client.Search("01001000");
@@ -63,8 +65,9 @@
             const string resultData =
                 "[ { 'cep': '91790-072', 'logradouro': 'Rua Domingos José Poli', 'complemento': '', 'bairro': 'Restinga', 'localidade': 'Porto Alegre', 'uf': 'RS', 'unidade': '', 'ibge': '4314902', 'gia': '' }, { 'cep': '91910-420', 'logradouro': 'Rua José Domingos Varella', 'complemento': '', 'bairro': 'Cavalhada', 'localidade': 'Porto Alegre', 'uf': 'RS', 'unidade': '', 'ibge': '4314902', 'gia': '' }, { 'cep': '90420-200', 'logradouro': 'Rua Domingos José de Almeida', 'complemento': '', 'bairro': 'Rio Branco', 'localidade': 'Porto Alegre', 'uf': 'RS', 'unidade': '', 'ibge': '4314902', 'gia': '' } ]";
             var httpClientMock = new MockHttpMessageHandler();
-            httpClientMock.When("https://viacep.com.br/ws/*/*/*/json")
-                          .Respond("application/json", resultData);
+            httpClientMock
+                .When("https://viacep.com.br/ws/*/*/*/json")
+                .Respond("application/json", resultData);
 
             var httpClient = new HttpClient(httpClientMock) { BaseAddress = _baseUrl };
             var client = new ViaCepClient(httpClient);
@@ -79,8 +82,6 @@
             Assert.All(list, result => Assert.Equal("Porto Alegre", result.City));
             Assert.All(list, result => Assert.Equal("RS", result.StateInitials));
             Assert.All(list, result => Assert.Equal(4314902, result.IBGECode));
-            
         }
-
     }
 }

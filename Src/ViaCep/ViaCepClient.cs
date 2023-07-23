@@ -77,11 +77,18 @@
         /// <param name="zipCode">The zip code.</param>
         /// <param name="cancellationToken">The token.</param>
         /// <returns></returns>
-        public async Task<ViaCepResult> SearchAsync(string zipCode, CancellationToken cancellationToken)
+        public async Task<ViaCepResult> SearchAsync(
+            string zipCode,
+            CancellationToken cancellationToken
+        )
         {
-            var response = await _httpClient.GetAsync($"/ws/{zipCode}/json", cancellationToken).ConfigureAwait(false);
+            var response = await _httpClient
+                .GetAsync($"/ws/{zipCode}/json", cancellationToken)
+                .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<ViaCepResult>(cancellationToken).ConfigureAwait(false);
+            return await response.Content
+                .ReadAsAsync<ViaCepResult>(cancellationToken)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -93,11 +100,19 @@
         /// <param name="cancellationToken">The token.</param>
         /// <returns></returns>
         public async Task<IEnumerable<ViaCepResult>> SearchAsync(
-            string stateInitials, string city, string address, CancellationToken cancellationToken)
+            string stateInitials,
+            string city,
+            string address,
+            CancellationToken cancellationToken
+        )
         {
-            var response = await _httpClient.GetAsync($"/ws/{stateInitials}/{city}/{address}/json", cancellationToken).ConfigureAwait(false);
+            var response = await _httpClient
+                .GetAsync($"/ws/{stateInitials}/{city}/{address}/json", cancellationToken)
+                .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<List<ViaCepResult>>(cancellationToken).ConfigureAwait(false);
+            return await response.Content
+                .ReadAsAsync<List<ViaCepResult>>(cancellationToken)
+                .ConfigureAwait(false);
         }
 
         #endregion

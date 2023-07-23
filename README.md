@@ -36,6 +36,8 @@ A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP A
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_ViaCEP&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_ViaCEP)
 
+[![DeepSource](https://app.deepsource.com/gh/guibranco/ViaCEP.svg/?label=active+issues&show_trend=true&token=84Hhxk-J1hIHiVC_ojm17J3q)](https://app.deepsource.com/gh/guibranco/ViaCEP/?ref=repository-badge)
+
 ---
 
 ## Installation

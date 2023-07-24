@@ -1,0 +1,45 @@
+name: Deep Source
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  DeepSource:
+    name: Deep Source Coverage report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Install DeepSource scanner
+        run: curl https://deepsource.io/cli | sh
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Build and analyze
+        if: >-
+          (
+            github.event_name == 'pull_request' &&
+            github.event.pull_request.head.repo.full_name == github.repository
+          ) || (
+            github.event_name == 'pull_request_target' &&
+            github.event.pull_request.head.repo.full_name != github.repository
+          ) || (
+            github.event_name == 'workflow_dispatch'
+          )
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
+        run: |
+          dotnet build -c Debug --verbosity minimal
+          dotnet test  -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+          ./bin/deepsource report --analyzer test-coverage --key csharp --value-file ./Tests/ViaCep.Tests/coverage.cobertura.xml

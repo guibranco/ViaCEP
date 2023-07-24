@@ -1,0 +1,24 @@
+name: Linter check
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  linter-check:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+
+      - name: Dotnet restore
+        run: dotnet tool restore
+
+      - name: CSharpier format check
+        run: |
+          dotnet csharpier . --check
+          echo "run 'dotnet build' to fix the formatting of the code automatically"

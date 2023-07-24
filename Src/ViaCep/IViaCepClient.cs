@@ -41,6 +41,11 @@
         /// <param name="address">The address.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        Task<IEnumerable<ViaCepResult>> SearchAsync(string stateInitials, string city, string address, CancellationToken cancellationToken);
+        Task<IEnumerable<ViaCepResult>> SearchAsync(
+            string stateInitials,
+            string city,
+            string address,
+            CancellationToken cancellationToken
+        );
     }
 }

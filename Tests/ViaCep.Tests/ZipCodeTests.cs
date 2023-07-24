@@ -60,9 +60,8 @@ namespace ViaCep.Tests
             Assert.Equal("SP", result.StateInitials);
         }
 
-
         /// <summary>
-        /// Validates if the search by zip code don't throw a exception if the address doesn't have a gia code 
+        /// Validates if the search by zip code don't throw a exception if the address doesn't have a gia code
         /// </summary>
         /// <returns></returns>
         [Fact]

@@ -1,19 +1,31 @@
 version: 2
+
 updates:
-- package-ecosystem: "docker"
-  directory: "/"
-  schedule:
-    interval: weekly
-  open-pull-requests-limit: 10
-  
+
 - package-ecosystem: "nuget"
   directory: "/"
   schedule:
     interval: weekly
-  open-pull-requests-limit: 10
- 
+  open-pull-requests-limit: 50
+  assignees:
+    - "guibranco"
+  reviewers:
+    - "guibranco"
+  labels:
+    - "nuget"
+    - "packages"
+    - ".NET"
+    - "dependencies"
+
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
     interval: weekly
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 50
+  assignees:
+    - "guibranco"
+  reviewers:
+    - "guibranco"
+  labels:
+    - "github-actions"
+    - "dependencies"

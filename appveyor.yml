@@ -104,7 +104,6 @@ deploy:
   skip_symbols: false
   on:
    branch: main
-  artifact: Package
 
 - provider: GitHub
   on:

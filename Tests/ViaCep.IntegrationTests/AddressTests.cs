@@ -15,7 +15,9 @@ namespace ViaCep.IntegrationTests
             var validZipCodeTwo = "01002-000"; //Another valid zip code for the same city and state
 
             //Act
-            var results = (await Client.SearchAsync(validState, validCity, validAddress, default)).ToList();
+            var results = (
+                await Client.SearchAsync(validState, validCity, validAddress, default)
+            ).ToList();
 
             //Assert
             Assert.NotNull(results);
@@ -31,7 +33,12 @@ namespace ViaCep.IntegrationTests
             var nonExistentCity = "Non-existent City";
 
             //Act
-            var results = await Client.SearchAsync("XX", nonExistentCity, nonExistentAddress, default);
+            var results = await Client.SearchAsync(
+                "XX",
+                nonExistentCity,
+                nonExistentAddress,
+                default
+            );
 
             //Assert
             Assert.Empty(results);
@@ -48,8 +55,15 @@ namespace ViaCep.IntegrationTests
             cancellationTokenSource.Cancel();
 
             //Act and Assert
-            await Assert.ThrowsAsync<TaskCanceledException>(() =>
-                Client.SearchAsync(validState, validCity, validAddress, cancellationTokenSource.Token));
+            await Assert.ThrowsAsync<TaskCanceledException>(
+                () =>
+                    Client.SearchAsync(
+                        validState,
+                        validCity,
+                        validAddress,
+                        cancellationTokenSource.Token
+                    )
+            );
         }
     }
 }

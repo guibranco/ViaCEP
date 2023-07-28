@@ -27,7 +27,9 @@ namespace ViaCep.IntegrationTests
             var invalidZipCode = "invalid";
 
             //Act and Assert
-            await Assert.ThrowsAsync<HttpRequestException>(() => Client.SearchAsync(invalidZipCode, default));
+            await Assert.ThrowsAsync<HttpRequestException>(
+                () => Client.SearchAsync(invalidZipCode, default)
+            );
         }
 
         [Fact]
@@ -38,8 +40,9 @@ namespace ViaCep.IntegrationTests
             cancellationTokenSource.Cancel();
 
             //Act and Assert
-            await Assert.ThrowsAsync<TaskCanceledException>(() =>
-                Client.SearchAsync("01001-000", cancellationTokenSource.Token));
+            await Assert.ThrowsAsync<TaskCanceledException>(
+                () => Client.SearchAsync("01001-000", cancellationTokenSource.Token)
+            );
         }
     }
 }

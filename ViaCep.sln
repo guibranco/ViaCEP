@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCep.IntegrationTests", "Tests\ViaCep.IntegrationTests\ViaCep.IntegrationTests.csproj", "{E57D93CD-0D0B-414B-96F6-6B9FCC661893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57D93CD-0D0B-414B-96F6-6B9FCC661893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57D93CD-0D0B-414B-96F6-6B9FCC661893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57D93CD-0D0B-414B-96F6-6B9FCC661893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57D93CD-0D0B-414B-96F6-6B9FCC661893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A251D320-410E-48F1-889D-9F59EB8CFEB9} = {A8E8D875-2058-4E15-B179-37FD1D408F66}
 		{D9FD0AA7-A4C5-43A2-820F-827BD503B52B} = {474F8215-8B66-4E36-927C-E078635C7996}
+		{E57D93CD-0D0B-414B-96F6-6B9FCC661893} = {474F8215-8B66-4E36-927C-E078635C7996}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC1987AC-4E78-4CCD-84BC-543F3D7426B4}

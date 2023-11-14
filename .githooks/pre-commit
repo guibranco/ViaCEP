@@ -3,7 +3,7 @@ LC_ALL=C
 
 local_branch="$(git rev-parse --abbrev-ref HEAD)"
 
-valid_branch_regex="^(feature|fix|docs|style|refactor|perf|hotfix|test|chore|create)\/[a-zA-Z0-9._-]+$"
+valid_branch_regex="^(dependabot|feature|fix|docs|style|refactor|perf|hotfix|test|chore|create)(\/[a-zA-Z0-9._-]+)+$"
 
 message="There is something wrong with your branch name. Branch names in this project must adhere to this contract: $valid_branch_regex. Your commit will be rejected. You should rename your branch to a valid name and try again."
 
@@ -13,6 +13,4 @@ then
     exit 1
 fi
 
-dotnet tool restore
-
-dotnet csharpier . --check
+dotnet tool restore && dotnet csharpier . --check

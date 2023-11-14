@@ -86,7 +86,8 @@
                 .GetAsync($"/ws/{zipCode}/json", cancellationToken)
                 .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content
+            return await response
+                .Content
                 .ReadAsAsync<ViaCepResult>(cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -110,7 +111,8 @@
                 .GetAsync($"/ws/{stateInitials}/{city}/{address}/json", cancellationToken)
                 .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content
+            return await response
+                .Content
                 .ReadAsAsync<List<ViaCepResult>>(cancellationToken)
                 .ConfigureAwait(false);
         }

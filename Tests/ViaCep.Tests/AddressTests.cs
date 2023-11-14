@@ -2,10 +2,10 @@
 {
     using System;
     using System.Linq;
-    using Xunit;
-    using Moq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Moq;
+    using Xunit;
 
     /// <summary>
     /// The address tests class.
@@ -24,11 +24,13 @@
                 .Setup(c => c.Search(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(fixtureResults);
 
-            var results = clientMock.Object.Search(
-                fixtureResults.First().StateInitials,
-                fixtureResults.First().City,
-                fixtureResults.First().Street
-            );
+            var results = clientMock
+                .Object
+                .Search(
+                    fixtureResults.First().StateInitials,
+                    fixtureResults.First().City,
+                    fixtureResults.First().Street
+                );
             Assert.NotNull(results);
 
             var list = results.ToList();
@@ -63,12 +65,14 @@
                 )
                 .ReturnsAsync(fixtureResults);
 
-            var results = await clientMock.Object.SearchAsync(
-                fixtureResults.First().StateInitials,
-                fixtureResults.First().City,
-                fixtureResults.First().Street,
-                CancellationToken.None
-            );
+            var results = await clientMock
+                .Object
+                .SearchAsync(
+                    fixtureResults.First().StateInitials,
+                    fixtureResults.First().City,
+                    fixtureResults.First().Street,
+                    CancellationToken.None
+                );
             Assert.NotNull(results);
 
             var list = results.ToList();

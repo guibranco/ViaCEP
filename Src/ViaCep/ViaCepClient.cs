@@ -87,8 +87,7 @@
                 .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             return await response
-                .Content
-                .ReadAsAsync<ViaCepResult>(cancellationToken)
+                .Content.ReadAsAsync<ViaCepResult>(cancellationToken)
                 .ConfigureAwait(false);
         }
 
@@ -112,8 +111,7 @@
                 .ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             return await response
-                .Content
-                .ReadAsAsync<List<ViaCepResult>>(cancellationToken)
+                .Content.ReadAsAsync<List<ViaCepResult>>(cancellationToken)
                 .ConfigureAwait(false);
         }
 

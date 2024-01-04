@@ -1,8 +1,9 @@
 repo_name: guibranco/ViaCEP
 report_id: 7b83085df9d0902f50d56ee4fac96884
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T16:49:00+00:00'
-requested_by: guibranco
+timestamp: '2024-01-04T15:00:51+00:00'
+requested_by: dependabot[bot]
 provider: github
 branch: main
 detected_tools_count: 14
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/guibranco/ViaCEP
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -27,9 +29,10 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.Tests/ViaCep.Tests.csproj
   detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-05 08:26:08.000000000 Z
+  last_updated_on: 2023-11-13 21:05:30.000000000 Z
 - name: ".NET Core"
   description: An Open Source, General-Purpose Development Platform Maintained by
     Microsoft and the .NET Community
@@ -41,10 +44,10 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png
-  detection_source_url: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
-  detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
+  detection_source: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-05 08:26:08.000000000 Z
+  last_updated_on: 2023-11-13 21:05:30.000000000 Z
 - name: ASP.NET Core
   description: A cross-platform .NET framework for building modern cloud-based web
     applications on Windows, Mac, or Linux
@@ -56,10 +59,10 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/11331/asp.net-core.png
-  detection_source_url: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
-  detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
+  detection_source: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-05 08:26:08.000000000 Z
+  last_updated_on: 2023-11-13 21:05:30.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -68,6 +71,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/guibranco/ViaCEP
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -77,9 +81,10 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source: ".github/workflows/size-label.yml"
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/.github/workflows/deep-source.yml
+  detection_source: ".github/workflows/deep-source.yml"
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-05 08:26:31.000000000 Z
+  last_updated_on: 2023-12-04 20:38:46.000000000 Z
 - name: Moq
   description: The most popular and friendly mocking framework for .NET
   website_url: https://github.com/Moq/moq4
@@ -88,6 +93,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/1628/1434934.png
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.Tests/ViaCep.Tests.csproj
   detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2023-01-14 13:13:39.000000000 Z
@@ -99,6 +105,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.Tests/ViaCep.Tests.csproj
   detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2023-01-14 13:13:39.000000000 Z
@@ -111,20 +118,21 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/ViaCep.sln
   detection_source: ViaCep.sln
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2020-03-28 07:52:09.000000000 Z
 - name: xUnit
   description: An open source, community-focused unit testing tool
   website_url: http://xunit.github.io/
-  version: 2.6.1
+  version: 2.6.3
   open_source: true
   hosted_saas: false
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/3077/ca5a327feb49ddfe1f4b11548907e5a1_400x400.png
-  detection_source_url: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
-  detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
+  detection_source: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   last_updated_by: Riju-bak
   last_updated_on: 2023-07-25 22:31:28.000000000 Z
 - name: Shell
@@ -136,6 +144,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/guibranco/ViaCEP
   detection_source: Repo Metadata
 - name: Microsoft.AspNet.WebApi.Client
   description: This package adds support for formatting and content negotiation to
@@ -148,7 +157,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12870/default_3ee9e3bfd65cbae9db28ab78b712a58bcd81af27.png
-  detection_source_url: Src/ViaCep/ViaCep.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Src/ViaCep/ViaCep.csproj
   detection_source: Src/ViaCep/ViaCep.csproj
   last_updated_by: snyk-bot
   last_updated_on: 2023-10-30 14:26:50.000000000 Z
@@ -162,21 +171,21 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/nuget/image.png
-  detection_source_url: Src/ViaCep/ViaCep.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Src/ViaCep/ViaCep.csproj
   detection_source: Src/ViaCep/ViaCep.csproj
   last_updated_by: snyk-bot
   last_updated_on: 2023-10-30 14:26:50.000000000 Z
 - name: xunit.runner.visualstudio
   description: Visual Studio 2012+ Test Explorer runner for the xUnit.net framework
   package_url: https://www.nuget.org/xunit.runner.visualstudio
-  version: 2.5.3
+  version: 2.5.5
   license: Other
   open_source: true
   hosted_saas: false
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13260/default_d2db5a200c4fe2d08cbdb2174cc230708973870b.png
-  detection_source_url: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
-  detection_source: Tests/ViaCep.Tests/ViaCep.Tests.csproj
+  detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
+  detection_source: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-11-06 20:26:34.000000000 Z
+  last_updated_on: 2023-12-12 11:45:19.000000000 Z

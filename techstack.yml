@@ -2,7 +2,7 @@ repo_name: guibranco/ViaCEP
 report_id: 7b83085df9d0902f50d56ee4fac96884
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T09:20:22+00:00'
+timestamp: '2024-01-11T12:23:50+00:00'
 requested_by: dependabot[bot]
 provider: github
 branch: main
@@ -125,7 +125,7 @@ tools:
 - name: xUnit
   description: An open source, community-focused unit testing tool
   website_url: http://xunit.github.io/
-  version: 2.6.3
+  version: 2.6.5
   open_source: true
   hosted_saas: false
   category: Build, Test, Deploy
@@ -178,7 +178,7 @@ tools:
 - name: xunit.runner.visualstudio
   description: Visual Studio 2012+ Test Explorer runner for the xUnit.net framework
   package_url: https://www.nuget.org/xunit.runner.visualstudio
-  version: 2.5.5
+  version: 2.5.6
   license: Other
   open_source: true
   hosted_saas: false
@@ -188,4 +188,4 @@ tools:
   detection_source_url: https://github.com/guibranco/ViaCEP/blob/main/Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   detection_source: Tests/ViaCep.IntegrationTests/ViaCep.IntegrationTests.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-12 11:45:19.000000000 Z
+  last_updated_on: 2024-01-08 20:34:15.000000000 Z

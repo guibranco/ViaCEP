@@ -40,7 +40,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [guibranco/ViaCEP](https://github.com/guibranco/ViaCEP)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|14<br/>Tools used|01/05/24 <br/>Report generated|
+|14<br/>Tools used|01/11/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -133,7 +133,7 @@ Full tech stack [here](/techstack.md)
   <br>
   <sub><a href="http://xunit.github.io/">xUnit</a></sub>
   <br>
-  <sub>v2.6.3</sub>
+  <sub>v2.6.5</sub>
 </td>
 
 </tr>
@@ -161,7 +161,7 @@ Full tech stack [here](/techstack.md)
 |:------|:------|:------|:------|:------|:------|
 |[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/Microsoft.AspNet.WebApi.Client)|v6.0.0|10/30/23|snyk-bot |Apache-2.0|N/A|
 |[Newtonsoft.Json](https://www.nuget.org/Newtonsoft.Json)|v13.0.3|10/30/23|snyk-bot |MIT|N/A|
-|[xunit.runner.visualstudio](https://www.nuget.org/xunit.runner.visualstudio)|v2.5.5|12/12/23|dependabot[bot] |Other|N/A|
+|[xunit.runner.visualstudio](https://www.nuget.org/xunit.runner.visualstudio)|v2.5.6|01/08/24|dependabot[bot] |Other|N/A|
 
 <br/>
 <div align='center'>

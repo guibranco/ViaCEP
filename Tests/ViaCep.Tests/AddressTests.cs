@@ -52,14 +52,13 @@
             var fixtureResults = ResultsFixture.GetSampleResults();
             var clientMock = new Mock<IViaCepClient>();
             clientMock
-                .Setup(
-                    c =>
-                        c.SearchAsync(
-                            It.IsAny<string>(),
-                            It.IsAny<string>(),
-                            It.IsAny<string>(),
-                            It.IsAny<CancellationToken>()
-                        )
+                .Setup(c =>
+                    c.SearchAsync(
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<CancellationToken>()
+                    )
                 )
                 .ReturnsAsync(fixtureResults);
 

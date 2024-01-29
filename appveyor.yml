@@ -59,7 +59,7 @@ build_script:
 - ps: |
     foreach($testProject in $TEST_PROJECTS)
     {
-        dotnet test $testProject /p:CollectCoverage=true "/p:CoverletOutputFormat=`"cobertura,lcov,opencover`""
+        dotnet test $testProject /p:CollectCoverage=true "/p:CoverletOutputFormat=\`"cobertura,opencover,lcov\`""
     }
 - if %LOCAL_PR% EQU 1 codecov -f "Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - if %LOCAL_PR% EQU 1 codeclimate-test-reporter format-coverage -t lcov -o "Tests\%SOLUTION_NAME%.Tests\code-climate.json" "Tests\%SOLUTION_NAME%.Tests\coverage.info"

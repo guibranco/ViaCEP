@@ -56,14 +56,10 @@ build_script:
 - codeclimate-test-reporter before-build
 - dotnet build %SOLUTION_NAME%.sln
 - ps: $TEST_PROJECTS = (Get-ChildItem -Path .\Tests\**\ -Recurse -Include *.csproj).Fullname
-- ps: $COVERLET_FORMATS = @('cobertura', 'lcov', 'opencover')
 - ps: |
     foreach($testProject in $TEST_PROJECTS)
     {
-        foreach($coverletFormat in $COVERLET_FORMATS)
-        {
-           dotnet test $testProject /p:CollectCoverage=true /p:CoverletOutputFormat="$coverletFormat"
-        }
+        dotnet test $testProject /p:CollectCoverage=true "/p:CoverletOutputFormat=`"cobertura,lcov,opencover`""
     }
 - if %LOCAL_PR% EQU 1 codecov -f "Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - if %LOCAL_PR% EQU 1 codeclimate-test-reporter format-coverage -t lcov -o "Tests\%SOLUTION_NAME%.Tests\code-climate.json" "Tests\%SOLUTION_NAME%.Tests\coverage.info"

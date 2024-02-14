@@ -27,7 +27,7 @@ init:
 before_build:
 - ps: $env:SOLUTION_NAME = $([io.path]::GetFileNameWithoutExtension($(Get-ChildItem -Path .\* -Include *.sln)))
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
-- ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$","-github"
+- ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$",""
 - ps: $env:LOCAL_PR = 0
 - ps: if(-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { $env:LOCAL_PR = 1 }
 - ps: if($env:APPVEYOR_PULL_REQUEST_HEAD_REPO_NAME -Eq $env:APPVEYOR_REPO_NAME) { $env:LOCAL_PR = 1 }

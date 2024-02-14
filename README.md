@@ -1,4 +1,4 @@
-# ViaCEP
+# ViaCEP SDK .NET
 
 A .NET client wrapper for both .NET Core & .NET Framework projects of [Via CEP API](https://viacep.com.br)
 

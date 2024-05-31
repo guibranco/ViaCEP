@@ -72,7 +72,6 @@ after_build:
 - xcopy Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* Build\.netstandard2.1\
 
 - copy Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
-- copy Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.snupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.snupkg
 
 - rd /s /q %CD%\Src\%SOLUTION_NAME%\bin\Release\
 

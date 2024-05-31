@@ -84,16 +84,6 @@ after_build:
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.zip" Build
 - 7z a -tzip -mx9 "%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.Coverage.zip" Coverage
 
-artifacts:
-- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.zip
-  name: ZipFile
-
-- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.nupkg
-  name: Package
-
-- path: $(SOLUTION_NAME).%APPVEYOR_BUILD_VERSION%.Coverage.zip
-  name: Coverage
-
 deploy:
 - provider: NuGet
   api_key: $(NUGET_TOKEN)
@@ -108,4 +98,3 @@ deploy:
   description: 'Release of $(SOLUTION_NAME) - v$(appveyor_build_version)'
   auth_token: $(GITHUB_TOKEN)
   force_update: true
-  artifact: ZipFile, Package, Coverage

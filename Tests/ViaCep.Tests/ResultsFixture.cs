@@ -7,10 +7,17 @@
     /// </summary>
     internal static class ResultsFixture
     {
+
         /// <summary>
-        /// Gets the sample results.
+        /// Retrieves a sample collection of <see cref="ViaCepResult"/> objects.
         /// </summary>
-        /// <returns>ICollection&lt;ViaCepResult&gt;.</returns>
+        /// <returns>A collection of sample <see cref="ViaCepResult"/> instances representing address information.</returns>
+        /// <remarks>
+        /// This method creates and returns a list of <see cref="ViaCepResult"/> objects, each containing various properties such as
+        /// Unit, City, Complement, GIACode, IBGECode, Neighborhood, StateInitials, Street, and ZipCode.
+        /// The sample data includes multiple entries for the city of São Paulo, demonstrating different combinations of
+        /// address attributes. This can be useful for testing or demonstration purposes where mock data is needed.
+        /// </remarks>
         public static ICollection<ViaCepResult> GetSampleResults() =>
             new List<ViaCepResult>
             {

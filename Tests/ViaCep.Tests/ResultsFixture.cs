@@ -24,7 +24,7 @@
                     Neighborhood = "Centro",
                     StateInitials = "SP",
                     Street = "Rua Direita",
-                    ZipCode = "12345-678"
+                    ZipCode = "12345-678",
                 },
                 new ViaCepResult
                 {
@@ -36,7 +36,7 @@
                     Neighborhood = "Centro",
                     StateInitials = "SP",
                     Street = "Rua Direita",
-                    ZipCode = "45632-870"
+                    ZipCode = "45632-870",
                 },
                 new ViaCepResult
                 {
@@ -48,8 +48,8 @@
                     Neighborhood = "Centro",
                     StateInitials = "SP",
                     Street = "Rua Direita",
-                    ZipCode = "98765-432"
-                }
+                    ZipCode = "98765-432",
+                },
             };
     }
 }

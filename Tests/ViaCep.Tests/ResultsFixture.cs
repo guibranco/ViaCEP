@@ -7,7 +7,6 @@
     /// </summary>
     internal static class ResultsFixture
     {
-
         /// <summary>
         /// Retrieves a sample collection of <see cref="ViaCepResult"/> objects.
         /// </summary>

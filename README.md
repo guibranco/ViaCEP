@@ -63,7 +63,7 @@ The package has two classes:
 *   [ViaCepClient](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepClient.cs): The main class (methods).
 *   [ViaCepResult](https://github.com/guibranco/ViaCEP/blob/main/ViaCEP/ViaCepResult.cs): The result class (data).
 
-This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with HttpClient parameter with a IHttpClientFactory instance.
+This package is fully compatible with Dependency Injection. Use the interface *IViaCepClient* and the constructor with an HttpClient parameter and an IHttpClientFactory instance.
 
 ```cs
 //your DI container
@@ -74,7 +74,7 @@ var viaCepClient = container.GetService<IViaCepClient>();
 var result = await viaCepClient.SearchAsync("01001000", cancellationToken);
 ```
 
-You can search using the zip code/postal code (AKA CEP) or using the address data (state initials - UF, city name and location name - street, avenue, park, square). Both methods support async and sync!
+You can search using the zip code/postal code (AKA CEP) or the address data (state initials - UF, city name, and location name - street, avenue, park, square). Both methods support async and sync!
 
 ### Querying by zip code / postal code (single result)
 
@@ -99,7 +99,8 @@ foreach(var result in results){
 
 ## Changelog
 
+*   2024-09-02: Add explicitly support to .NET 6.0 and .NET 8.0 [#154](https://github.com/guibranco/ViaCEP/issues/154) by [@guibranco](https://github.com/guibranco)
 *   2023-07-28: Add integration tests [#71](https://github.com/guibranco/ViaCEP/issues/71) by [@Riju-bak](https://github.com/Riju-bak)
 *   2023-03-03: Update dependencies, change branch name, update logo. [@guibranco](https://github.com/guibranco)
 *   2021-06-21: Update dependencies version. [@guibranco](https://github.com/guibranco)
-*   2020-10-23: Add support to .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)
+*   2020-10-23: Support .NET Standard 2.0 and .NET Framework v4.6.1 and above. [@guibranco](https://github.com/guibranco)

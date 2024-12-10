@@ -6,8 +6,6 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-  pull_request_target:
-    types: [opened, synchronize, reopened]
 
 jobs:
   DeepSource:
@@ -24,16 +22,13 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '9.0.x'
 
       - name: Build and analyze
         if: >-
           (
             github.event_name == 'pull_request' &&
             github.event.pull_request.head.repo.full_name == github.repository
-          ) || (
-            github.event_name == 'pull_request_target' &&
-            github.event.pull_request.head.repo.full_name != github.repository
           ) || (
             github.event_name == 'workflow_dispatch'
           )

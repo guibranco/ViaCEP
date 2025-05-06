@@ -55,14 +55,13 @@ namespace ViaCep.IntegrationTests
             cancellationTokenSource.Cancel();
 
             //Act and Assert
-            await Assert.ThrowsAsync<TaskCanceledException>(
-                () =>
-                    Client.SearchAsync(
-                        validState,
-                        validCity,
-                        validAddress,
-                        cancellationTokenSource.Token
-                    )
+            await Assert.ThrowsAsync<TaskCanceledException>(() =>
+                Client.SearchAsync(
+                    validState,
+                    validCity,
+                    validAddress,
+                    cancellationTokenSource.Token
+                )
             );
         }
     }

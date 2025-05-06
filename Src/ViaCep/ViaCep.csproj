@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <ProjectGuid>A251D320-410E-48F1-889D-9F59EB8CFEB9</ProjectGuid>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
@@ -17,14 +16,12 @@
     <PackageIcon>packageLogo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>    
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="../../LICENSE" Pack="true" PackagePath="\" />
     <None Include="../../packageLogo.png" Pack="true" PackagePath="\" />
